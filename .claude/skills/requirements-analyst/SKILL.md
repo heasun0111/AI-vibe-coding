@@ -38,7 +38,8 @@ ISO 26262(기능안전)와 Automotive SPICE 4.1(SYS.2/SWE.1 등 요구사항 분
 2. **DOCX(TPL-SWE1-001/002)**: `docx` 스킬로 열어 표지(템플릿 ID/프로젝트/문서 ID/버전/작성자·검토자),
    변경 이력, 작성·검토·승인 상태표를 실제 값으로 채운다. 각 장 아래 "작성 안내:" 문구는 실제 내용으로
    교체하고 안내 문구 자체는 삭제한다. 장·절 번호와 목차 구조(TPL-SWE1-001: 1~12장, TPL-SWE1-002: 1~7장)는
-   임의로 바꾸지 않는다.
+   임의로 바꾸지 않는다. 원래 표 형식이 없는 절이라도 여러 항목·속성을 나열하는 내용이면 줄글 대신
+   적절한 표로 구조화한다(`CLAUDE.md` "산출물 작성 공통 규칙").
 3. **XLSX(TPL-TRC-001)**: `xlsx` 스킬로 열어 "Bidirectional Trace" 시트의 실제 데이터는 10행부터
    입력한다(1~9행은 표지/열 헤더이므로 보존). 열 구성은 `Upper Req | SW Req | Architecture |
    Detailed Design | Code | SWE.4 | SWE.5 | SWE.6 | Coverage`이며, 7절의 상류/하류 추적 속성을 이 열에
@@ -103,8 +104,7 @@ Use Case 표(TPL-SWE1-002 3장/4장)는 `Use Case ID | 명칭 | 목적 | 주 액
 
 ## 3. 기능 요구사항 — UML/SysML 다이어그램
 
-기능 요구사항은 표 형태의 텍스트 서술과 함께, 이해를 돕는 다이어그램을 Mermaid 또는 PlantUML
-코드블록으로 문서에 포함한다(렌더링 도구가 필요 없는 텍스트 기반 표기).
+기능 요구사항은 표 형태의 텍스트 서술과 함께, 이해를 돕는 다이어그램을 포함한다.
 
 | 표현 대상 | 다이어그램 유형 | 권장 문법 |
 |---|---|---|
@@ -115,17 +115,25 @@ Use Case 표(TPL-SWE1-002 3장/4장)는 `Use Case ID | 명칭 | 목적 | 주 액
 | 요구사항 간 관계(파생/충족/검증/정제/추적) | SysML Requirement Diagram | PlantUML SysML 확장(`requirement`, `<<deriveReqt>>`, `<<satisfy>>`, `<<verify>>`, `<<refine>>`, `<<trace>>`) |
 | 시스템 구조/인터페이스 | SysML Block Definition/Internal Block Diagram | PlantUML SysML 확장(`block`, 포트/인터페이스) |
 
-- Mermaid는 GitHub 등에서 별도 도구 없이 렌더링되므로 일반 UML 표현에 우선 사용한다.
-- SysML 고유 표기(requirement 다이어그램, BDD/IBD, «satisfy»/«verify» 관계)가 필요하면 PlantUML의
-  SysML 확장 문법을 사용한다.
+- Mermaid는 초안 작성이 빠르고 SysML 고유 표기(requirement 다이어그램, BDD/IBD, «satisfy»/«verify»
+  관계)가 필요하면 PlantUML의 SysML 확장 문법을 사용한다.
 - 다이어그램의 요소 이름(액터, 상태, 블록 등)에는 요구사항 ID를 주석이나 라벨로 병기해 추적이 되게 한다.
 - 다이어그램은 보조 수단이다. 다이어그램만으로 요구사항을 대체하지 않고, 반드시 표의 텍스트 요구사항과
   함께 제시한다.
 - **Use Case 다이어그램은 예외적으로 공식 템플릿(`TPL-SWE1-003`, drawio)이 있다.** 정식 산출물로 만들
-  때는 0.2절 절차에 따라 이 drawio 파일을 채운다. Mermaid/PlantUML로 먼저 초안을 잡은 뒤 drawio로
-  옮겨도 된다. Activity/State/Sequence/SysML Requirement·BDD·IBD 등 다른 다이어그램 유형은 아직 공식
-  drawio 템플릿이 없으므로, 공식 템플릿이 제공되기 전까지는 Mermaid/PlantUML 코드블록을 DOCX 본문(4장·
-  9장 등 해당 절)에 포함하거나 부록으로 첨부하는 방식을 그대로 사용한다.
+  때는 0.2절 절차에 따라 이 drawio 파일을 채운다.
+
+**원본과 렌더링 이미지 분리 (`CLAUDE.md` "산출물 작성 공통 규칙")**: 채팅 중 빠른 논의용 초안은
+Mermaid/PlantUML 코드블록으로 보여줘도 되지만, **정식 산출물(DOCX)에는 다이어그램 코드블록을 그대로
+넣지 않는다.**
+1. 다이어그램 원본은 산출물과 같은 폴더의 `<산출물 파일명>_diagrams/<다이어그램 ID>.mmd`(Mermaid) 또는
+   `.puml`(PlantUML)로 저장한다. drawio 다이어그램은 기존과 동일하게 `.drawio` 원본을 저장한다.
+2. 실제로 설치된 렌더링 도구(예: mermaid-cli(`mmdc`), PlantUML(Java `plantuml.jar`), drawio 내보내기
+   기능)로 그 원본을 PNG/SVG로 렌더링한다. 도구 설치 여부를 먼저 확인하고, 없으면 임의로 코드블록을
+   문서에 대신 넣지 말고 "확인 필요 — 렌더링 도구 미설치"로 리포트에 남겨 사용자에게 설치 여부를
+   묻는다.
+3. DOCX 본문(4장·9장 등 해당 절)에는 그 렌더링 이미지만 삽입하고, 이미지 캡션에 원본 파일 경로를
+   병기한다.
 
 ## 4. 비기능 요구사항 — ISO/IEC 25010
 
