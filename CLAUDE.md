@@ -12,8 +12,11 @@
 ## 분석 단계 — 요구사항 분석
 
 - `.claude/skills/requirements-analyst/SKILL.md` — ISO 26262/A-SPICE 준수 요구사항(기능/비기능)
-  분석 방법론(초안). EARS 작성 패턴, UML/SysML 다이어그램 표현, ISO/IEC 25010 기반 비기능 요구사항과
-  실행 가능한 검증방안, 양방향 추적성·일관성 확보 방안을 포함한다. 공식 요구사항 산출물 템플릿은 아직
-  미확정이며, 제공되는 대로 이 스킬의 "산출물 템플릿" 절을 교체해야 한다.
+  분석 방법론. EARS 작성 패턴, UML/SysML 다이어그램 표현, ISO/IEC 25010 기반 비기능 요구사항과
+  실행 가능한 검증방안, 양방향 추적성·일관성 확보 방안을 포함한다. 공식 요구사항 산출물 템플릿은
+  `WP_Templates/`(SWE.1: `Engineering/SoftwareRequirementsAnalysis/`, 추적성: `Engineering/
+  Traceability/TPL-TRC-001`)에 확정되어 있으며, 스킬의 "0. 산출물 템플릿" 절에 매핑·작성 절차가
+  정리되어 있다. 템플릿 등록부는 `WP_Templates/PRC-TPL-001_표준 산출물 양식 등록부.xlsx`. 템플릿이
+  개정되면(등록부 버전 상승) 그 즉시 스킬 0절을 새 버전에 맞춰 갱신한다.
 - `.claude/agents/requirements-engineer.md` — 위 스킬을 사용해 요구사항 산출물을 작성하는 서브에이전트.
 
