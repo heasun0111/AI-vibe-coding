@@ -20,3 +20,15 @@
   개정되면(등록부 버전 상승) 그 즉시 스킬 0절을 새 버전에 맞춰 갱신한다.
 - `.claude/agents/requirements-engineer.md` — 위 스킬을 사용해 요구사항 산출물을 작성하는 서브에이전트.
 
+## 설계 단계 — 상세설계
+
+- `.claude/skills/detailed-design-analyst/SKILL.md` — ISO 26262/A-SPICE 준수 SW 상세설계(SWE.3)
+  분석·작성 방법론(초안). 함수 계약(사전/사후조건) 서술 패턴, UML(클래스·시퀀스·상태·호출관계) 다이어그램
+  표현, ISO 26262-6 SW 단위 설계 원칙 점검, 단위시험 기반 실행 가능한 검증방안, 상위 요구사항/아키텍처와의
+  양방향 추적성·일관성 확보 방안을 포함한다. 공식 산출물 템플릿은 `WP_Templates/Engineering/
+  SoftwareDetailedDesignAndUnitConstruction/`(TPL-SWE3-001/002, TPL-SBOM-001)에 있으며, `TPL-SWE3-001/
+  002`는 등록부 기준 v0.9(초안)이다. `requirements-analyst` 스킬이 만든 SW 요구사항·Use Case 및
+  SWE.2 아키텍처 산출물을 입력으로 받는다는 전제로 동작하며, SWE.2(아키텍처) 전용 스킬/에이전트는 아직
+  만들지 않았다.
+- `.claude/agents/detailed-design-engineer.md` — 위 스킬을 사용해 상세설계 산출물을 작성하는 서브에이전트.
+
