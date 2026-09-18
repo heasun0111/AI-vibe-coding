@@ -9,8 +9,9 @@ license: 해당없음
 ISO 26262(기능안전)와 Automotive SPICE 4.1 SWE.3(SW 상세설계 및 단위 구현) 프로세스를 준수하는
 상세설계 산출물을 분석·작성하기 위한 방법론이다. 공식 산출물 템플릿이 저장소 `WP_Templates/`에
 제공되었으므로, 아래 0절의 템플릿 구조를 그대로 따르고 1~9절은 그 템플릿의 표·절을 채우는 방법론으로만
-사용한다. 이 스킬은 `requirements-analyst` 스킬로 작성된 SW 요구사항·Use Case, 그리고 SWE.2
-아키텍처 산출물(`ENG-SWE2-001`)을 입력으로 받는다는 전제로 동작한다.
+사용한다. 이 스킬은 `requirements-analyst` 스킬로 작성된 SW 요구사항·Use Case, 그리고
+`architecture-analyst` 스킬(SWE.2)로 작성된 아키텍처 산출물(`ENG-SWE2-001`)을 입력으로 받는다는
+전제로 동작한다.
 
 ## 0. 산출물 템플릿 (공식 — `WP_Templates/` 기준)
 
